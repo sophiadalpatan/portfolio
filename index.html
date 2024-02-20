@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sophia Dalpatan</title>
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/4jSbKqC.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/aqua-grotesque" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alike+Angular&family=Asul&family=Concert+One&family=Eczar&family=Fruktur&family=Kavoon&family=Neuton&family=Roboto+Slab:wght@300;400&family=Space+Mono&family=Tillana&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        body {
+            background-color: #EEEEEF;
+            color: #1C1919;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Aqua Grotesque';
+        }
+
+        p {
+            color: #1C1919;
+            font-family: 'Roboto Slab';
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 100;
+            line-height: normal;
+        }
+
+        .subtitle {
+            color: #1C1919;
+            font-family: 'Roboto Slab', sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 5.88px;
+            text-align: center;
+        }
+
+        .subtitle-two {
+            color: #1C1919;
+            font-family: 'Roboto Slab', sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            letter-spacing: 4.9px;
+            text-align: center;
+        }
+
+        /**The First Section**/
+        section {
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /****/
+        .center-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /**SocMed Icons**/
+        .btn-socialmedia {
+            height: 50px;
+            width: auto;
+            margin: 15px;
+        }
+
+        .div-widgets {
+            float: left;
+        }
+
+        /***MODAL FOR IMAGES***/
+        .myImg {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .myImg:hover {
+            opacity: 0.7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            height: 100vh;
+            width: auto;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        .modal-content,
+        #caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 3px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /******ReSPonsive IMAGE GRID*******/
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        .column {
+            -ms-flex: 25%;
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+            /***box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);***/
+        }
+
+        /*******Flipcard******/
+
+        .flip-card {
+            margin: 20px;
+            background-color: transparent;
+            width: 390px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: #dbe0e4;
+            color: rgb(25, 25, 29);
+            transform: rotateY(180deg);
+            padding: 25px;
+        }
+
+        /*******Divider******/
+        .divider-diamond {
+            background-image: url(https://i.imgur.com/slJs2M0.png);
+            background-repeat: repeat;
+            height: 150px;
+            margin: 50px 0px 50px 0px;
+        }
+
+        .divider-diamond-small {
+            background-image: url(https://i.imgur.com/EsEQanH.png);
+            background-repeat: repeat;
+            height: 150px;
+            margin: 50px 0px 50px 0px;
+        }
+
+        .hoverobject {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 800px) {
+            .column {
+                -ms-flex: 50%;
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="secTop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="d-flex align-items-center" style="height: 100vh;">
+                        <div class="container center-content">
+                            <img class="hoverobject" src="https://i.imgur.com/vynuB6E.png" data-value="-5">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="d-flex align-items-center" style="height: 100vh;">
+                        <div class="container center-content">
+                            <h1 data-aos="fade-up">sophie</h1>
+                            <p class="subtitle" data-aos="fade-right" data-aos-delay="500">Sophia Marie M.
+                                Dalpatan</p>
+                            <p class="subtitle-two" data-aos="fade-left" data-aos-delay="500">web developer | digital
+                                artist</p>
+                            <div class="div-widgets">
+                                <a href="https://www.facebook.com/akolangnamantosisophia" target="_blank"><img
+                                        src="https://i.imgur.com/eljxZr1.png" class="btn-socialmedia"></a>
+                                <a href="https://peridon.itch.io/" target="_blank"><img
+                                        src="https://i.imgur.com/mAWoYxM.png" class="btn-socialmedia"></a>
+                                <a href="https://ko-fi.com/cyanideperi" target="_blank"><img
+                                        src="https://i.imgur.com/mlVMz5O.png" class="btn-socialmedia"></a>
+                            </div>
+                            <p style="text-align: center;">sophiadalpatan@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="divider-diamond"></div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="d-flex align-items-center" style="height: 100vh;">
+                        <div class="container">
+                            <h3>ABOUT ME</h3>
+                            <p data-aos="fade-right" data-aos-duration="500">I am a 4th Year college student studying
+                                Information Technology
+                                in Polytechnic University of the Philippines. I have experience in creating websites as
+                                well as drawing digital artworks.
+                            </p>
+                            <br>
+                            <p data-aos="fade-right" data-aos-duration="500">
+                                As such, I've developed fondness in creating stories as well as
+                                bringing life to the characters in them, However, one cannot
+                                truly stop learning. I think that I'll improve more as time passes by.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="d-flex align-items-center" style="height: 100vh;">
+                        <div class="container center-content">
+                            <img src="https://i.imgur.com/oQR699k.png" class="hoverobject" data-aos="zoom-out-down">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="divider-diamond-small"></div>
+    <section>
+        <h3 style="text-align: center;">WEBSITES</h3>
+        <div class="row" style="--bs-gutter-x: 0;">
+            <div class="col-lg-6 col-sm-12" style="display:flex; justify-content: center;">
+                <a href="https://sophiadalpatan.github.io/starholdcafe/">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://i.imgur.com/piq6rfB.png" alt="Thumbnail of Starhold Cafe Website"
+                                    style="width:390px;height:300px;">
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>Starhold Cafe</h1>
+                                <p><i>Where you can find comfort in entropy</i></p>
+                                <p>This website focuses on the creation of parallaxes that was submitted for our programming subject back in 3rd year of college.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-12" style="display:flex; justify-content: center;">
+                <a href="https://sophiadalpatan.github.io/kaiserescape/">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://i.imgur.com/kPRAi6z.png" alt="Thumbnail of Kaiser Escape Universe"
+                                    style="width:390px;height:300px;">
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>Kaiser Escape</h1>
+                                <p><i>I want to find my place in the world</i></p>
+                                <p>This is a website created to showcase my characters and story using 1 page only. It was submitted as a mideterm exam requirement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+    </section>
+    <div class="divider-diamond-small"></div>
+    <section>
+        <h3 style="text-align: center;">ARTWORKS</h3>
+        <div class="row" data-aos="fade-bottom" data-aos-duration="500">
+            <div class="column">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/dc8b6z4-52b876b3-81ef-4b3e-8e90-ef7d51b28342.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1MThiNzk5LTc4M2MtNDBjZS1hODY5LTQ3Y2NhMWQ2MTFhMFwvZGM4YjZ6NC01MmI4NzZiMy04MWVmLTRiM2UtOGU5MC1lZjdkNTFiMjgzNDIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.kLKLECEJ1H2BY2VSgj0bEUIwyl-5ypJkXAk-6RIqRPg"
+                    class="myImg img-fluid" alt="Hearted Smile | Commissioned by silentprincesseve">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/dc7j0rr-ab1ed394-e3b3-4f4f-aac0-9dbe56de91c0.jpg/v1/fit/w_504,h_504,q_70,strp/the_angel_and_the_bartender_by_flairistica_dc7j0rr-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTA0IiwicGF0aCI6IlwvZlwvYzUxOGI3OTktNzgzYy00MGNlLWE4NjktNDdjY2ExZDYxMWEwXC9kYzdqMHJyLWFiMWVkMzk0LWUzYjMtNGY0Zi1hYWMwLTlkYmU1NmRlOTFjMC5qcGciLCJ3aWR0aCI6Ijw9NTA0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.SKg0dO3cj8bMkma56qwCQUvh3dgQInbeo7cNkfKdDAA"
+                    class="myImg img-fluid" alt="The Angel and the Bartender">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/d7my8bm-b067ea4f-9562-4969-96f9-11d21874ddb0.jpg/v1/fit/w_432,h_432,q_70,strp/crossover__ppg_and_fop_by_flairistica_d7my8bm-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDMyIiwicGF0aCI6IlwvZlwvYzUxOGI3OTktNzgzYy00MGNlLWE4NjktNDdjY2ExZDYxMWEwXC9kN215OGJtLWIwNjdlYTRmLTk1NjItNDk2OS05NmY5LTExZDIxODc0ZGRiMC5qcGciLCJ3aWR0aCI6Ijw9NDMyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3HTjTDxSRmCTm71YYTHQQmg2c73JkRpmxxZ_oTj9kIc"
+                    class="myImg img-fluid" alt="Timmy Turner and Blossom">
+                <img src="https://i.imgur.com/Q5602Ae.png" class="myImg img-fluid" alt="Raymond the Guardian Angel">
+                <img src="https://i.imgur.com/TZFSfI1.png" class="myImg img-fluid" alt="Venti =P">
+            </div>
+            <div class="column">
+                <img src="https://i.imgur.com/9OQufwj.png" class="myImg img-fluid"
+                    alt="Android Solitude | Portfolio Banner">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/d7ch227-8bf7e167-70a4-453b-b148-53c7195d60e5.jpg/v1/fit/w_648,h_648,q_70,strp/2014__habol_pa___by_flairistica_d7ch227-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjQ4IiwicGF0aCI6IlwvZlwvYzUxOGI3OTktNzgzYy00MGNlLWE4NjktNDdjY2ExZDYxMWEwXC9kN2NoMjI3LThiZjdlMTY3LTcwYTQtNDUzYi1iMTQ4LTUzYzcxOTVkNjBlNS5qcGciLCJ3aWR0aCI6Ijw9NjQ4In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.dk5Ra6dZrpxQnZ_oNdfkjHsVgbBEAI9weSdiAhGXqqI"
+                    class="myImg img-fluid" alt="2014 HTF Gijinka">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/dc7ix93-7082feb0-5f7b-412f-be08-ef0e82569bcd.jpg/v1/fit/w_504,h_504,q_70,strp/boris_by_flairistica_dc7ix93-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTA0IiwicGF0aCI6IlwvZlwvYzUxOGI3OTktNzgzYy00MGNlLWE4NjktNDdjY2ExZDYxMWEwXC9kYzdpeDkzLTcwODJmZWIwLTVmN2ItNDEyZi1iZTA4LWVmMGU4MjU2OWJjZC5qcGciLCJ3aWR0aCI6Ijw9NTA0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.C2nVxy81omThfznuuOf-0odviKlqQ42HWSa92KCsTqw"
+                    class="myImg img-fluid" alt="Boris the Wolf">
+                <img src="https://i.imgur.com/jRn0kyp.png" class="myImg img-fluid" alt="Sirius and Jack: New Hairstyle">
+                <img src="https://i.imgur.com/BWGuRCn.png" class="myImg img-fluid" alt="Vince Concept Art">
+                <img src="https://i.imgur.com/XTiU66v.png" class="myImg img-fluid" alt="Pink Xiao">
+            </div>
+            <div class="column">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/dc8ezv9-d51eb941-4b37-4ff3-8ea0-7c90fa50dee9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1MThiNzk5LTc4M2MtNDBjZS1hODY5LTQ3Y2NhMWQ2MTFhMFwvZGM4ZXp2OS1kNTFlYjk0MS00YjM3LTRmZjMtOGVhMC03YzkwZmE1MGRlZTkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.kTcfZkxjsSDdr6EmoFdbEBFbHfmB2OqFlTvmMstfYzQ"
+                    class="myImg img-fluid" alt="Cutie Inumimi | Commissioned by SweetHearthMlp">
+                <img src="https://i.imgur.com/HcLaZpA.png" class="myImg img-fluid" alt="Jumpy Ghost Face Gijinka">
+                <img src="https://i.imgur.com/V95qb6M.png" class="myImg img-fluid" alt="Gavin Concept Art">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c518b799-783c-40ce-a869-47cca1d611a0/dc8bjfq-c3ad211e-64c5-4934-8bbd-61fdf977cf39.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M1MThiNzk5LTc4M2MtNDBjZS1hODY5LTQ3Y2NhMWQ2MTFhMFwvZGM4YmpmcS1jM2FkMjExZS02NGM1LTQ5MzQtOGJiZC02MWZkZjk3N2NmMzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dsELzni_9j4PMG9iDDE9hj1jVNokKPM-eIIGVRzgaYY"
+                    class="myImg img-fluid" alt="Henry Stephens | Commissioned by SweetHearthMlp">
+                <img src="https://i.imgur.com/QxnYFEO.png" class="myImg img-fluid"
+                    alt="Sirius B and Sirius A's ex-Wife">
+            </div>
+            <div class="column">
+                <img src="https://i.imgur.com/mxm6ijz.png" class="myImg img-fluid" alt="Giggles Lemonade Gijinka">
+                <img src="https://i.imgur.com/8JZgBys.jpg" class="myImg img-fluid" alt="Alce the Greatest Inventor">
+                <img src="https://i.imgur.com/j5bCkCX.png" class="myImg img-fluid" alt="SOS Girl Power & Ram">
+                <img src="https://i.imgur.com/eRYCG6O.png" class="myImg img-fluid"
+                    alt="Nic with CN Color Palette Challenge">
+                <img src="https://i.imgur.com/SqZACsI.png" class="myImg img-fluid" alt="VenLumi: Mermaid's Melody">
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script>
+        ///////////////////////////MODAL FOR THE IMAGES///////////////////////
+        function handleModal(img) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+        var images = document.getElementsByClassName("myImg");
+
+        for (var i = 0; i < images.length; i++) {
+            handleModal(images[i]);
+        }
+    </script>
+    <script>
+        function handleModalForLargeScreens(img) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+        function disableModalForSmallScreens(img) {
+            img.onclick = null;
+        }
+        function applyModalBasedOnScreenSize() {
+            var images = document.getElementsByClassName("myImg");
+            var isLargeScreen = window.innerWidth >= 568;
+
+            if (isLargeScreen) {
+                for (var i = 0; i < images.length; i++) {
+                    handleModalForLargeScreens(images[i]);
+                }
+            } else {
+                for (var i = 0; i < images.length; i++) {
+                    disableModalForSmallScreens(images[i]);
+                }
+            }
+        }
+        applyModalBasedOnScreenSize();
+        window.addEventListener('resize', applyModalBasedOnScreenSize);
+
+
+
+        //////////////////HOVERABLE IMAGE////////////////////
+        document.addEventListener("mousemove", parallax);
+        function parallax(e) {
+            document.querySelectorAll(".hoverobject").forEach(function (move) {
+                var moving_value = move.getAttribute("data-value");
+                var x = (e.clientX * moving_value) / 250;
+                var y = (e.clientY * moving_value) / 250;
+                move.style.transform = "translateX(" + x + "px) translateY(" + y + "px)";
+            });
+        }
+    </script>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js">//////////////ANIMATE ON REVEAL///////////////</script>
+    <script>
+        AOS.init({
+            duration: 3000,
+            once: true,
+        });
+    </script>
+</body>
+
+</html>
